@@ -1,0 +1,43 @@
+{% load static %}
+
+<html>
+<head>
+    <h1>
+        Registreringssider
+    </h1>
+</head>
+<link rel="stylesheet" type="text/css" href="{% static 'users/register.css' %}">
+<body>
+<div class="container">
+    <div class="card">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags}}">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% block content %}
+        <div class="content-section">
+            <form method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Registrer deg i dag</legend>
+                    {{ form.as_p }}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-outline-info" type="submit">Registrer deg</button>
+                </div>
+            </form>
+            <div class="border-top pt-3">
+                <small class="text-muted">
+                    Already have an Account? <a class="ml-2" href="#">Logg inn</a>
+                </small>
+            </div>
+        </div>
+        {% endblock content %}
+    </div>
+</div>
+<script src="{% static 'users/app.js' %}"></script>
+</body>
+</html>
