@@ -18,5 +18,6 @@ def main():
     execute_from_command_line(sys.argv)
 
 
+#Starting the application
 if __name__ == '__main__':
     main()
